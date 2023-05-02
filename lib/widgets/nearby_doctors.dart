@@ -1,6 +1,7 @@
 import 'package:loginsignup/models/doctor_model.dart';
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:loginsignup/pages/detail_doctor.dart';
 
 class NearbyDoctors extends StatelessWidget {
   const NearbyDoctors({Key? key}) : super(key: key);
@@ -28,13 +29,28 @@ class NearbyDoctors extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    "Dr. ${nearbyDoctors[index].name}",
-                    style: const TextStyle(
-                        fontSize: 16, fontWeight: FontWeight.bold),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(context,MaterialPageRoute(builder: (context) => DoctorProfile(name: nearbyDoctors[index].name, image : nearbyDoctors[index].profile, description: nearbyDoctors[index].description) )); },
+    
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.redAccent,
+                      elevation: 0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                    ),
+                    
+        
+                      child: Text(
+                        "Dr. ${nearbyDoctors[index].name}",
+                        style: const TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold),
+                      ),
+                    
                   ),
                   const SizedBox(height: 8),
-                  const Text("General practitioner"),
+                   Text("${nearbyDoctors[index].position}"),
                   const SizedBox(height: 16),
                   Row(
                     children: [
@@ -50,7 +66,7 @@ class NearbyDoctors extends StatelessWidget {
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                       ),
-                      const Text("195 Reviews")
+                      Text("${nearbyDoctors[index].totalReviews}")
                     ],
                   )
                 ],

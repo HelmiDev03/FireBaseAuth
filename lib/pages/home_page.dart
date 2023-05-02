@@ -7,6 +7,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:loginsignup/user_model.dart';
 import 'package:loginsignup/login_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'chat.dart';
 class HomePage extends StatefulWidget {
   final String name ;
   const HomePage({Key? 
@@ -57,7 +58,7 @@ class _HomePageState extends State<HomePage> {
             SizedBox(height: 4),
              
             Text(
-              "How are you feeling today?",
+              "How are you feeling ?",
               style: TextStyle( fontSize: 12, color: Colors.black,fontWeight: FontWeight.bold
                ),
             ),
@@ -70,15 +71,14 @@ class _HomePageState extends State<HomePage> {
                        logout(context);
                     
                   }),
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Ionicons.notifications_outline),
-          ),
           
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Ionicons.search_outline),
-          ),
+            
+          ElevatedButton(onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>ChatPage()));
+            },
+            child: Icon(Ionicons.chatbubble_ellipses_outline)),
+          
+         
         ],
       ),
       body: ListView(
@@ -102,35 +102,16 @@ class _HomePageState extends State<HomePage> {
           ),
           const SizedBox(height: 15),
           const NearbyDoctors(),
+       
+         
+    
         ],
+  
+        
+        
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        showUnselectedLabels: false,
-        showSelectedLabels: false,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Ionicons.home_outline),
-            activeIcon: Icon(Ionicons.home),
-            label: "Home",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Ionicons.calendar_outline),
-            activeIcon: Icon(Ionicons.calendar),
-            label: "Home",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Ionicons.chatbubble_ellipses_outline),
-            label: "Home",
-            activeIcon: Icon(Ionicons.chatbubble_ellipses),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Ionicons.person_outline),
-            activeIcon: Icon(Ionicons.person),
-            label: "Home",
-          ),
-        ],
-      ),
+      
+     
     );
   }
 
@@ -140,3 +121,13 @@ class _HomePageState extends State<HomePage> {
         MaterialPageRoute(builder: (context) => LoginScreen()));
   }
 }
+
+
+
+
+
+
+
+
+
+//icon: Icon(Ionicons.chatbubble_ellipses_outline),  icon: Icon(Ionicons.person_outline),icon: Icon(Ionicons.calendar_outline),icon: Icon(Ionicons.home_outline),
