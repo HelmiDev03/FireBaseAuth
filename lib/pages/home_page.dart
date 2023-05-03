@@ -8,6 +8,8 @@ import 'package:loginsignup/user_model.dart';
 import 'package:loginsignup/login_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'chat.dart';
+
+
 class HomePage extends StatefulWidget {
   final String name ;
   const HomePage({Key? 
@@ -102,7 +104,7 @@ class _HomePageState extends State<HomePage> {
           ),
           const SizedBox(height: 15),
           const NearbyDoctors(),
-       
+         
          
     
         ],

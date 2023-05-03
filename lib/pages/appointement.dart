@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'appointementconfirmation.dart' ;
 
 class AppointmentPage extends StatefulWidget {
   final String doctorName;
@@ -82,6 +83,16 @@ class _AppointmentPageState extends State<AppointmentPage> {
             SizedBox(height: 16),
             ElevatedButton(
               onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => AppointmentConfirmationPage(
+                      doctorName: widget.doctorName,
+                      date: '${_dateTime.year}-${_dateTime.month}-${_dateTime.day}',
+                      time: _getTimeString(),
+                    ),
+                  ),
+                );
                 // Handle appointment booking logic
               },
               child: Text(
